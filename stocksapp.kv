@@ -1,0 +1,225 @@
+ScreenManagement:
+	transition:
+	Intro:
+	Select:
+	backtest:
+	
+
+
+
+
+
+
+
+
+
+
+<Intro>:
+	name: 'intro screen'
+	canvas:
+		Rectangle:
+			source: 'wallstreet.jpg'
+			size: self.size
+			pos: self.pos
+
+
+
+	GridLayout:
+		rows: 3
+		Label:
+			text:"Premium Stock Selector\nBy Simeon Ikudabo"
+			markup: True
+			font_size: 30
+		Label:
+			text: "Copyright @2017 \nApple Store, Google play, Windows 10"
+			markup: True
+			font_size: 30
+
+
+		Button:
+			on_release: app.root.current = 'select'
+			text: 'Continue'
+			font_size: 30
+			size_hint: .1, .1
+
+
+
+
+
+
+
+<Select>:
+	name: 'select'
+	canvas:
+		Rectangle:
+			source: 'wallstreet.jpg'
+			size: self.size
+			pos: self.pos
+
+	GridLayout:
+		rows: 5
+		columns: 3#One row for now because I have two objects. Take the number of objects divided by the number 2 to get a valid number of rows 
+		Label: 
+			text: 'Enter A stock ticker!'
+
+
+		TextInput:
+			id: stock_ticker
+			multiline: False
+
+		Button:
+			text:'Enter'
+			on_release: root.enterstock()
+
+		Label:
+			text:'Stock Price'
+
+		TextInput: 
+			id: stock_price
+			multiline: False
+			text: ""
+			readonly: True
+
+		Button:
+			text: 'Enter'
+
+		Label:
+			text:'Stock Z-score'
+
+		TextInput:
+			id: stock_z
+			multiline: False
+			text:""
+			readonly: True
+
+		Button:
+			text: 'Enter'
+
+		Label:
+			text:'Recommedation'
+
+		TextInput:
+			id: recommendation
+			multiline: True
+			text: ""
+			readonly: True 
+
+		Button:
+			text: 'Enter'
+
+		Button:
+			text: 'Clear'
+			on_release: root.clear()
+
+		Button:
+			text: 'continue'
+			on_release: app.root.current = 'tester'
+
+
+
+
+
+
+<backtest>:
+	name:'tester'
+	canvas:
+		Rectangle:
+			source: 'wallstreet.jpg'
+			size: self.size
+			pos: self.pos
+
+	GridLayout:
+		rows: 6
+		columns: 2
+
+		Label:
+			text: 'Enter a stock ticker to run backtest'
+
+
+		TextInput:
+			id: test_ticker
+			multiline: False
+			text: ""
+
+		Label:
+			text: 'Stock Signals'
+
+
+
+		ScrollView:
+			id: scrlv
+
+
+
+		
+
+			TextInput:
+				id: test_signals
+				text:""
+				multiline: True
+				height: max(self.minimum_height, scrlv.height)
+				readonly: False
+
+		Label:
+			text: 'Strategy Profits'
+
+		ScrollView:
+			id: scrlv2
+
+		
+
+			TextInput:
+				id: test_profits
+				text: ""
+				multiline: True
+				height: max(self.minimum_height, scrlv2.height)
+				readonly: False
+
+		Label:
+			text: 'portfolio backtest'
+
+		ScrollView:
+			id: scrlv3
+
+			TextInput:
+				id: port_test
+				text: ""
+				multiline: True
+				height: max(self.minimum_height, scrlv2.height)
+				readonly: False
+
+
+
+			
+
+
+		Button:
+			text: 'calculate'
+			on_release: root.test_stock()
+
+
+		Button: 
+			text: 'clear'
+			on_release: root.clear2()
+
+		
+
+
+
+
+
+		
+
+		
+	
+	
+
+
+
+		
+
+
+
+
+
+
